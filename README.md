@@ -47,7 +47,7 @@ python Loss_function.py && python Masking_Encoding.py && python Multiscale_Cross
 - 
 
 ## Reference
-```python
+```bash
 @inproceedings{jiang2022ecgad,
   title={Multi-scale Cross-restoration Framework for Electrocardiogram Anomaly Detection}
   author={Jiang, Aofan and Huang, Chaoqin and Cao, Qing and Wu, Shuang and Zeng, Zi and Chen, Kang and Zhang, Ya and Wang, Yanfeng},
