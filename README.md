@@ -33,18 +33,16 @@ where, the ECG recordings were sampled at 300 Hertz and all data is provided in 
 
 ### 2. Pre-processing - Draft
 
-Assuming you have Anaconda installed, run `conda env create -f mri_fusion.yaml` to install all pre-requisites. The pipeline used for this work was simply to normalize and resize the image data (`pre_process.py`) and train models (`train.py`); you can find the specific commands to conduct all experiments in `run_experiments.bat` containing five experiments for each model at different number-generating seeds. After training, we conducted a feature importance analysis (`feature_imp.py`) to understand the contribution of each non-image features to the breast cancer prediction. Lastly, `plotROC.ipynb` was used to produce the combined ROC curves for the best run and five-run ensemble. All the experimental results for the two unimodal baselines and Learned Feature Fusion and Feature Fusion can be found in `results/` directory. 
-
-To execute the experiments, simply run `train.py` with the arguments of your choice. Below is an example of training the Learned Feature Fusion model on the dataset with the settings used in the project using default values for most arguments (refer to `train.py` for more default values):
+To execute the experiments from your terminal the following: 
 ```python
-python train.py --data_dir <path_to_your_dataset> \
-                --out_dir <path_to_results> \
-                --model learned-feature-fusion \
-                --seed 0  
+python Loss_function.py && python Masking_Encoding.py && python Multiscale_Crossattention.py && python Tren_generation_module.py && python Uncertaintyaware_restoration.py
 ```
 
-Example to run the learned feature fusion on the above trained model:
+### Initial findings to replicate [ECGAD](https://github.com/MediaBrain-SJTU/ECGAD/tree/main): 
+- No all `.mat` files contain `.hea` files.
+- Content of the `val` key is presented as an array
 ```python
-python feature_imp.py   --model learned-feature-fusion
-                        --model_name learned-feature-fusion-concat_no-CW_aug_seed0
+[[-127 -162 -197 ...  -18  -22  -21]]
 ```
+- Multi-scale Cross-restoration was applied to a single signal `A00001.mat`. 
+
