@@ -13,7 +13,6 @@ In the realm of electrocardiogram (ECG) anomaly detection, where accurate identi
 
 ## Inital Stage
 
-
 ### 1. Data Exploration <br/>
 The notebook `EDA.ipynb` is utilized to determine the optimal preprocessing techniques, encompassing feature selection, and to convert the data into `.npy` files. The directory `\data` is currently kept private and organised as follows:
 ```bash
@@ -44,5 +43,16 @@ python Loss_function.py && python Masking_Encoding.py && python Multiscale_Cross
 ```python
 [[-127 -162 -197 ...  -18  -22  -21]]
 ```
-- Multi-scale Cross-restoration was applied to a single signal `A00001.mat`. 
+- Multi-scale Cross-restoration was applied to a single signal `A00001.mat`.
+- 
+
+## Reference
+```python
+@inproceedings{jiang2022ecgad,
+  title={Multi-scale Cross-restoration Framework for Electrocardiogram Anomaly Detection}
+  author={Jiang, Aofan and Huang, Chaoqin and Cao, Qing and Wu, Shuang and Zeng, Zi and Chen, Kang and Zhang, Ya and Wang, Yanfeng},
+  booktitle={International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)},
+  year={2023}
+}
+```
 
