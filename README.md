@@ -1,5 +1,5 @@
 # ASCREM
-## Evaluating the Role of Multimodal Clinical Data in Breast Cancer Diagnostic Classifier
+## Anomaly Detection in Single Short ECG Recordings via Multi-scale Cross-Restoration Framework (ASCREM)
 
 Author:Paul Yomer Ruiz Pinto (N10962646)
 Last Modified: 25/03/2024<br/>
