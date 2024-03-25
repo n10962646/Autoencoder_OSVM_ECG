@@ -46,7 +46,7 @@ python Loss_function.py && python Masking_Encoding.py && python Multiscale_Cross
 - Multi-scale Cross-restoration was applied to a single signal `A00001.mat`.
 - 
 
-## Reference
+## References
 ```bash
 @inproceedings{jiang2022ecgad,
   title={Multi-scale Cross-restoration Framework for Electrocardiogram Anomaly Detection}
