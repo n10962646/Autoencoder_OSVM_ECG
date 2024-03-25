@@ -32,7 +32,7 @@ where, the ECG recordings were sampled at 300 Hertz and all data is provided in 
 
 ### 2. Pre-processing - Draft
 
-To execute the experiments from your terminal the following: 
+To execute the experiments from a terminal, use the following command:
 ```python
 python Loss_function.py && python Masking_Encoding.py && python Multiscale_Crossattention.py && python Tren_generation_module.py && python Uncertaintyaware_restoration.py
 ```
