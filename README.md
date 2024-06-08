@@ -32,7 +32,7 @@ where, the ECG recordings were sampled at 300 Hertz and all data is provided in 
 
 ### 2. Data Preparation
 
-The following scripts are designed to process and prepare ECG signal data for machine learning tasks. The first script (mat_to_npy.py) converts .mat files into .npy format, ensuring that the signals are of a consistent length. The second script (npy_to_npz.py) further processes these .npy files by associating each signal with a label and saving the result in .npz format. The final script (load_npz.py) loads these .npz files, ensuring that the signals are padded or truncated to a specified length, and prepares them for further analysis or model training. 
+The following scripts are designed to process and prepare ECG signal data for machine learning tasks. The first script `mat_to_npy.py` converts `.mat` files into `.npy` format, ensuring that the signals are of a consistent length. The second script `npy_to_npz.py` further processes these `.npy`files by associating each signal with a label and saving the result in `.npz` format. The final script `load_npz.py` loads these `.npz` files, ensuring that the signals are padded or truncated to a specified length, and prepares them for further analysis or model training. 
 
 Convert .mat Files to .npy Files:
 ```python
