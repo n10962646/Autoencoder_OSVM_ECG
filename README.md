@@ -30,20 +30,56 @@ The notebook `EDA.ipynb` is utilized to determine the optimal preprocessing tech
 ```
 where, the ECG recordings were sampled at 300 Hertz and all data is provided in MATLAB V4 WFDB-compliant format, each including a `.mat` file containing the ECG and a `.hea` file containing the waveform information. 
 
-### 2. Pre-processing - Draft
+### 2. Data Preparation
 
-To execute the experiments from a terminal, use the following command:
+The following scripts are designed to process and prepare ECG signal data for machine learning tasks. The first script (mat_to_npy.py) converts .mat files into .npy format, ensuring that the signals are of a consistent length. The second script (npy_to_npz.py) further processes these .npy files by associating each signal with a label and saving the result in .npz format. The final script (load_npz.py) loads these .npz files, ensuring that the signals are padded or truncated to a specified length, and prepares them for further analysis or model training. 
+
+Convert .mat Files to .npy Files:
 ```python
-python Loss_function.py && python Masking_Encoding.py && python Multiscale_Crossattention.py && python Tren_generation_module.py && python Uncertaintyaware_restoration.py
+python mat_to_npy.py /path/to/mat/files /path/to/output/npy/files --signal_length 9000
+```
+Convert .npy Files to .npz Files:
+```python
+python npy_to_npz.py /path/to/npy/files /path/to/output/npz/files /path/to/labels.csv
+```
+Load and Process .npz Files:
+```python
+python load_npz.py /path/to/npz/files 9000
 ```
 
-### Initial findings to replicate [ECGAD](https://github.com/MediaBrain-SJTU/ECGAD/tree/main): 
-- No all `.mat` files contain `.hea` files.
-- Content of the `val` key is presented as an array
+### Automated ECG Signal Analysis with Deep Learning and One-class SVM
+
+The following pipeline consists of several modular Python scripts designed to handle different stages of the analysis process, from data preprocessing to model training and evaluation.
+
+**1. Preprocessing ECG Data**
+
+The `pre_process.py` script serves as the initial step in the pipeline, facilitating the loading and preprocessing of ECG data stored in `.npy` files. Users can specify parameters such as window size and step size for segmenting the signals, allowing for fine-tuning of the preprocessing stage.
+
 ```python
-[[-127 -162 -197 ...  -18  -22  -21]]
+python pre_process.py <input_directory> <output_directory> --window_size <window_size> --step_size <step_size>
 ```
-- Multi-scale Cross-restoration was applied to a single signal `A00001.mat`.
+
+**2. Autoencoder Model**
+
+Once the data is preprocessed, the `autoencoder.py` script defines and compiles an autoencoder model architecture tailored for ECG signal analysis. This script offers flexibility in configuring the number of layers in both the global and local branches of the autoencoder, enabling users to customize the model architecture based on their specific requirements.
+
+```python
+python autoencoder.py <output_directory> --global_layers <global_layers> --local_layers <local_layers>
+```
+**3. Training Autoencoder and One-class SVM**
+
+The `train.py` script orchestrates the training process of the autoencoder model using the preprocessed ECG data to pass the encoded data to the one-class SVM. Training parameters such as the number of epochs, batch size, and early stopping criteria to optimize model performance can be adjusted. 
+
+```python
+python train.py --global_layers <global_layers> --local_layers <local_layers> --epochs <epochs> --batch_size <batch_size> --output_directory <output_directory> --early_stopping_monitor <early_stopping_monitor> --early_stopping_patience <early_stopping_patience> --early_stopping_restore_best_weights <early_stopping_restore_best_weights>
+```
+**4. Evaluation of Anomaly Detection**
+
+Upon completion of training, the trained autoencoder model is evaluated for its performance in reconstructing ECG signals and detecting anomalies. The pipeline generates comprehensive visualizations, including reconstructed signal plots, anomaly score histograms, and confusion matrices, enabling users to assess the model's efficacy in identifying abnormal cardiac activities accurately.
+
+```python
+python evaluate.py --output_directory <output_directory> --global_layers <global_layers> --local_layers <local_layers> --threshold <threshold>
+```
 
 ## References
 ```bash
