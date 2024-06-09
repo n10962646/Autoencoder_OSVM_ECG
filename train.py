@@ -2,7 +2,7 @@ import argparse
 
 from autoencoder import build_autoencoder, reconstruction_error_loss
 from pre_process import load_data, preprocess_data
-from evaluation import plot_training_history, plot_original_and_reconstructed_global, plot_original_and_reconstructed_local, plot_anomaly_scores_histogram, plot_confusion_matrix_and_metrics
+from evaluate import plot_training_history, plot_original_and_reconstructed_global, plot_original_and_reconstructed_local, plot_anomaly_scores_histogram, plot_confusion_matrix_and_metrics
 
 
 import os
