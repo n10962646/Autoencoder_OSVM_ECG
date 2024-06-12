@@ -78,6 +78,9 @@ Upon completion of training, the trained autoencoder model is evaluated for its 
 ```python
 python evaluate.py --output_directory <output_directory> --global_layers <global_layers> --local_layers <local_layers> --threshold <threshold>
 ```
+**Output**
+
+![Image Alt text](output/confusion_matrix_and_metrics.png "Confusion Matrix")  
 
 ## 4. References
 ```bash
